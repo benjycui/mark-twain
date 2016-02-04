@@ -1,6 +1,6 @@
 {
   "name": "mark-twain",
-  "version": "0.1.0-beta",
+  "version": "0.2.0-beta",
   "description": "Parse Markdown into JavaScript object.",
   "main": "index.js",
   "scripts": {

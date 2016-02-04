@@ -40,18 +40,18 @@ class Parser {
   parseElement() {
     const token = this.token;
     switch (token.type) {
-    case 'hr': return {type: 'hr'};
-    case 'heading': return this.parseHeading(token);
-    case 'code': return this.parseCode(token);
-    case 'table': return null; // TODO
-    case 'blockquote_start': return this.parseBlockquote(token);
-    case 'list_start': return this.parseList(token);
-    case 'list_item_start':
-    case 'loose_item_start': return this.parseListItem(token);
-    case 'html': return {type: 'html', children: token.text};
-    case 'paragraph': return this.parseParagraph(token);
-    case 'text': return this.parseText(token);
-    default: return null;
+      case 'hr': return {type: 'hr'};
+      case 'heading': return this.parseHeading(token);
+      case 'code': return this.parseCode(token);
+      case 'table': return null; // TODO
+      case 'blockquote_start': return this.parseBlockquote(token);
+      case 'list_start': return this.parseList(token);
+      case 'list_item_start':
+      case 'loose_item_start': return this.parseListItem(token);
+      case 'html': return {type: 'html', children: token.text};
+      case 'paragraph': return this.parseParagraph(token);
+      case 'text': return this.parseText(token);
+      default: return null;
     }
   }
 
@@ -63,14 +63,14 @@ class Parser {
     return {
       type: 'code',
       props: {lang: token.lang},
-      children: token.text
+      children: token.text,
     };
   }
 
   parseBlockquote() {
     const blockquote = {
       type: 'blockquote',
-      children: []
+      children: [],
     };
 
     while (this.next().type !== 'blockquote_end') {
@@ -83,7 +83,7 @@ class Parser {
   parseList(token) {
     const list = {
       type: token.ordered ? 'ol' : 'ul',
-      children: []
+      children: [],
     };
 
     while (this.next().type !== 'list_end') {
@@ -96,8 +96,8 @@ class Parser {
   parseListItem() {
     const listItem = {
       type: 'li',
-      children: []
-    }
+      children: [],
+    };
 
     while (this.next().type !== 'list_item_end') {
       listItem.children.push(this.parseElement());
@@ -109,7 +109,7 @@ class Parser {
   parseParagraph(token) {
     return {
       type: 'p',
-      children: marked.inlineLexer(token.text, this.links) // TODO
+      children: marked.inlineLexer(token.text, this.links), // TODO
     };
   }
 
@@ -122,7 +122,7 @@ class Parser {
 
     return {
       type: 'span',
-      children: marked.inlineLexer(text, this.links) // TODO
+      children: marked.inlineLexer(text, this.links), // TODO
     };
   }
 }

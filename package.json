@@ -4,15 +4,21 @@
   "description": "Parse Markdown into JavaScript object.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint ./index.js ./src",
+    "eslint-fix": "eslint --fix ./index.js ./src"
   },
   "keywords": [
     "markdown",
     "parser"
   ],
-  "author": "Benjy Cui",
+  "author": "Benjy Cui <benjytrys@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "marked": "^0.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-egg": "^1.0.3"
   }
 }

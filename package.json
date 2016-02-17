@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "marked": "^0.3.5",
-    "yaml-front-matter": "^3.3.0"
+    "yaml-front-matter": "^3.4.0"
   },
   "devDependencies": {
     "eslint": "^2.1.0",

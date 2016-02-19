@@ -19,7 +19,7 @@
     "yaml-front-matter": "^3.3.0"
   },
   "devDependencies": {
-    "eslint": "^2.1.0",
+    "eslint": "^2.2.0",
     "eslint-config-egg": "^1.0.3"
   }
 }

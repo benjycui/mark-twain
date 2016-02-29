@@ -35,8 +35,7 @@ describe('MT', function() {
     const ol = content[6];
     assert.strictEqual(ol.type, 'ol');
     assert.strictEqual(ol.children[0].type, 'li');
-    assert.strictEqual(ol.children[1].children[0].type, 'span');
-    assert.strictEqual(ol.children[2].children[0].children, 'Third');
+    assert.strictEqual(ol.children[0].children, 'First');
 
     const ul = content[7];
     assert.strictEqual(ul.type, 'ul');

@@ -46,8 +46,8 @@ class Parser {
       case 'table': return null; // TODO
       case 'blockquote_start': return this.parseBlockquote(token);
       case 'list_start': return this.parseList(token);
-      case 'list_item_start':
-      case 'loose_item_start': return this.parseListItem(token);
+      case 'list_item_start': return this.parseListItem(token);
+      case 'loose_item_start': return this.parseLooseItem(token);
       case 'html': return {type: 'html', children: token.text};
       case 'paragraph': return this.parseParagraph(token);
       case 'text': return this.parseText(token);
@@ -100,10 +100,33 @@ class Parser {
     };
 
     while (this.next().type !== 'list_item_end') {
-      listItem.children.push(this.parseElement());
+      const child = this.token.type === 'text' ?
+              this.token.text :
+              this.parseElement();
+      if (child !== null) {
+        listItem.children.push(child);
+      }
+    }
+
+    // If there is just only one text child, just set it instead of store into array.
+    if (listItem.children.length === 1 && typeof listItem.children[0] === 'string') {
+      listItem.children = listItem.children[0];
     }
 
     return listItem;
+  }
+
+  parseLooseItem() {
+    const looseItem = {
+      type: 'li',
+      children: [],
+    };
+
+    while (this.next().type !== 'list_item_end') {
+      looseItem.children.push(this.parseElement());
+    }
+
+    return looseItem;
   }
 
   parseParagraph(token) {

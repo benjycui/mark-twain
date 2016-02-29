@@ -19,3 +19,8 @@ description: a sample Markdown for test
 * Something
 * [Something](www.something.com)
 * ![Somethong](www.comething.com/img)
+
+
+| hello | world |
+|-------|-------|
+| 你好   | 世界   |

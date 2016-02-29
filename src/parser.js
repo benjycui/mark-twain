@@ -43,7 +43,7 @@ class Parser {
       case 'hr': return {type: 'hr'};
       case 'heading': return this.parseHeading(token);
       case 'code': return this.parseCode(token);
-      case 'table': return null; // TODO
+      case 'table': return this.parseTable(token);
       case 'blockquote_start': return this.parseBlockquote(token);
       case 'list_start': return this.parseList(token);
       case 'list_item_start': return this.parseListItem(token);
@@ -65,6 +65,47 @@ class Parser {
       props: {lang: token.lang},
       children: token.text,
     };
+  }
+
+  parseTable(token) {
+    const table = {
+      type: 'table',
+      children: [],
+    };
+
+    table.children.push({
+      type: 'thead',
+      children: [{
+        type: 'tr',
+        children: token.header.map((cell) => {
+          return {
+            type: 'th',
+            children: this.parseInlineText(cell),
+          };
+        })
+      }],
+    })
+
+    table.children.push({
+      type: 'tbody',
+      children: [],
+    })
+
+    const tbody = table.children[1];
+    token.cells.forEach((row) => {
+      tbody.children.push({
+        type: 'tr',
+        children: row.map((cell) => {
+          return {
+            type: 'td',
+            children: this.parseInlineText(cell),
+          }
+        }),
+      })
+    });
+
+
+    return table;
   }
 
   parseBlockquote() {
@@ -110,7 +151,7 @@ class Parser {
 
     // If there is just only one text child, just set it instead of store into array.
     if (listItem.children.length === 1 && typeof listItem.children[0] === 'string') {
-      listItem.children = marked.inlineLexer(listItem.children[0], this.links);
+      listItem.children = this.parseInlineText(listItem.children[0]);
     }
 
     return listItem;
@@ -132,7 +173,7 @@ class Parser {
   parseParagraph(token) {
     return {
       type: 'p',
-      children: marked.inlineLexer(token.text, this.links), // TODO
+      children: this.parseInlineText(token.text), // TODO
     };
   }
 
@@ -145,8 +186,12 @@ class Parser {
 
     return {
       type: 'span',
-      children: marked.inlineLexer(text, this.links), // TODO
+      children: this.parseInlineText(text), // TODO
     };
+  }
+
+  parseInlineText(text) {
+    return marked.inlineLexer(text, this.links);
   }
 }
 

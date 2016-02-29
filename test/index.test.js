@@ -40,5 +40,7 @@ describe('MT', function() {
     const ul = content[7];
     assert.strictEqual(ul.type, 'ul');
     assert.strictEqual(ul.children.length, 3);
+    assert.strictEqual(ul.children[1].children, '<a href="www.something.com">Something</a>');
+    assert.strictEqual(ul.children[2].children, '<img src="www.comething.com/img" alt="Somethong">');
   });
 });

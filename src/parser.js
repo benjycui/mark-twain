@@ -110,7 +110,7 @@ class Parser {
 
     // If there is just only one text child, just set it instead of store into array.
     if (listItem.children.length === 1 && typeof listItem.children[0] === 'string') {
-      listItem.children = listItem.children[0];
+      listItem.children = marked.inlineLexer(listItem.children[0], this.links);
     }
 
     return listItem;

@@ -44,8 +44,17 @@ describe('MT', () => {
     assert.strictEqual(ul.children[2].children, '<img src="www.comething.com/img" alt="Somethong">');
   });
 
+  it('should process nested list correctly', () => {
+    const ol = content[8];
+    const firstChild = ol.children[0];
+    const parent = firstChild.children[0];
+    const children = firstChild.children[1].children[0];
+    assert.strictEqual(parent, 'Parent');
+    assert.strictEqual(children.children, 'Children');
+  });
+
   it('should process table correctly', () => {
-    const table = content[8];
+    const table = content[9];
     assert.strictEqual(table.type, 'table');
     assert.strictEqual(table.children.length, 2);
 

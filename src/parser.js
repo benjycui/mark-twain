@@ -82,14 +82,14 @@ class Parser {
             type: 'th',
             children: this.parseInlineText(cell),
           };
-        })
+        }),
       }],
-    })
+    });
 
     table.children.push({
       type: 'tbody',
       children: [],
-    })
+    });
 
     const tbody = table.children[1];
     token.cells.forEach((row) => {
@@ -99,9 +99,9 @@ class Parser {
           return {
             type: 'td',
             children: this.parseInlineText(cell),
-          }
+          };
         }),
-      })
+      });
     });
 
 

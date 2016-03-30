@@ -1,15 +1,15 @@
 'use strict';
 
-const marked = require('marked');
+const remark = require('remark');
 const YFM = require('yaml-front-matter');
-const Parser = require('./parser');
+const transformer = require('./transformer');
 
 module.exports = function MT(markdown) {
   const ret = {};
 
   const raw = YFM.loadFront(markdown);
-  const tokens = marked.lexer(raw.__content);
-  ret.content = Parser.parse(tokens);
+  const ast = remark.parse(raw.__content);
+  ret.content = transformer(ast);
 
   // Get meta data
   raw.__content = undefined;

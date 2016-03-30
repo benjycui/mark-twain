@@ -1,6 +1,6 @@
 # Mark Twain
 
-It is not easy to process Markdown directly. However, we can use `mark-twain` to parse a Markdown file(and YAML which in it) into a JavaScript object which is easier to process.
+It is not easy to process Markdown directly. However, we can use `mark-twain` to parse a Markdown file(and YAML which in it) into [JsonML](http://www.jsonml.org/) which is easier to process.
 
 ## Installation
 
@@ -13,10 +13,10 @@ npm install mark-twain
 ```js
 const MT = require('mark-twain');
 const fs = require('fs');
-const mdData = MT(fs.readFileSync('something.md').toString());
+const jsonML = MT(fs.readFileSync('something.md').toString());
 ```
 
-The returned value of `MT` would be something like this:
+The returned value of `MT` would be JsonML, something looks like this:
 
 ```js
 {
@@ -27,24 +27,41 @@ The returned value of `MT` would be something like this:
   },
 
   // Others will be parsed as a tree
-  content: [{
-    type: 'h1',
-    children: 'heading'
-   }, {
-    type: 'ul',
-    children: [{
-      type: 'li',
-      children: [{
-        type: 'span',
-        children: 'Bla bla ...'
-      }]
-    }]
-   }, {
-    type: 'hr'
-   }, {
-    type: 'p',
-    children: 'Bla bla ...'
-  }]
+  content:  [
+    "article",
+    ["h1", "Here is a heading"],
+    [
+      "ol",
+      [
+        "li",
+        [
+          "p",
+          "First"
+        ]
+      ],
+      ...
+    ],
+    [
+      "p",
+      "This is a paragraph, including ",
+      [
+        "em",
+        "EM"
+      ],
+      " and ",
+      [
+        "strong",
+        "STRONG"
+      ],
+      ". Any question? Oh, I almost forget ",
+      [
+        "code",
+        "inline code"
+      ],
+      "."
+    ],
+    ...
+  ]
 }
 ```
 

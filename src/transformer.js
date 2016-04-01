@@ -51,6 +51,8 @@ module.exports = function transformer(node) {
       return ['blockquote'].concat(transformedChildren);
     case 'thematicBreak':
       return ['hr'];
+    case 'html':
+      return ['innerHTML', node.value];
     default:
       return node;
   }

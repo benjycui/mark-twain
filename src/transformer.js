@@ -24,15 +24,15 @@ module.exports = function transformer(node) {
       return ['p'].concat(transformedChildren);
     case 'link':
       return ['a', {
-      title: node.title,
-      href: node.url,
-    }].concat(transformedChildren);
+        title: node.title,
+        href: node.url,
+      }].concat(transformedChildren);
     case 'image':
       return ['img', {
-      title: node.title,
-      src: node.url,
-      alt: node.alt,
-    }];
+        title: node.title,
+        src: node.url,
+        alt: node.alt,
+      }];
     case 'table':
       return ['table'].concat(transformedChildren);
     case 'tableRow':
@@ -46,9 +46,11 @@ module.exports = function transformer(node) {
     case 'inlineCode':
       return ['code', node.value];
     case 'code':
-      return ['code', { lang: node.lang }, node.value];
+      return ['pre', { lang: node.lang }, ['code', node.value]];
     case 'blockquote':
       return ['blockquote'].concat(transformedChildren);
+    case 'thematicBreak':
+      return ['hr'];
     default:
       return node;
   }

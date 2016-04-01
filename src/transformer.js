@@ -34,7 +34,7 @@ module.exports = function transformer(node) {
         alt: node.alt,
       }];
     case 'table':
-      return ['table'].concat(transformedChildren);
+      return ['table', ['tbody'].concat(transformedChildren)];
     case 'tableRow':
       return ['tr'].concat(transformedChildren);
     case 'tableCell':

@@ -1,5 +1,12 @@
 'use strict';
 
+function transformHTML(html) {
+  if (/<br\s?\/?>/.test(html)) {
+    return ['br'];
+  }
+  return ['innerHTML', html]
+}
+
 module.exports = function transformer(node) {
   if (node == null) return;
 
@@ -52,7 +59,7 @@ module.exports = function transformer(node) {
     case 'thematicBreak':
       return ['hr'];
     case 'html':
-      return ['innerHTML', node.value];
+      return transformHTML(node.value);
     default:
       return node;
   }

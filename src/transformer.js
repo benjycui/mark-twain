@@ -1,11 +1,6 @@
 'use strict';
 
-function transformHTML(html) {
-  if (/<br\s?\/?>/.test(html)) {
-    return ['br'];
-  }
-  return ['innerHTML', html]
-}
+const JsonML = require('jsonml.js');
 
 module.exports = function transformer(node) {
   if (node == null) return;
@@ -59,7 +54,7 @@ module.exports = function transformer(node) {
     case 'thematicBreak':
       return ['hr'];
     case 'html':
-      return transformHTML(node.value);
+      return JsonML.fromHTMLText(node.value);
     default:
       return node;
   }

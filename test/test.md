@@ -38,3 +38,15 @@ console.log('Hello world!');
 > Here is a blockquote
 
 ---
+
+<script>
+  console.log('Good bye all!');
+</script>
+
+<p><a href="benjycui.github.io">My blog</a></p>
+
+<div class="home">
+  <div class="banner">Oh, banner!</div>
+</div>
+
+<br />

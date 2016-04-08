@@ -55,6 +55,8 @@ module.exports = function transformer(node) {
       return ['hr'];
     case 'html':
       return JsonML.fromHTMLText(node.value);
+    case 'linkReference':
+      return `[${node.identifier}]`;
     default:
       return node;
   }

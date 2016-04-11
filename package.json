@@ -1,26 +1,27 @@
 {
   "name": "mark-twain",
   "version": "1.1.2",
-  "description": "Parse Markdown into JavaScript object.",
+  "description": "Parse Markdown into JsonML.",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "lint": "eslint ./index.js ./src",
-    "eslint-fix": "eslint --fix ./index.js ./src"
+    "lint": "eslint --fix ./index.js ./src"
   },
   "keywords": [
     "markdown",
-    "parser"
+    "yaml",
+    "parser",
+    "jsonml"
   ],
   "author": "Benjy Cui <benjytrys@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "jsonml.js": "~0.1.0",
-    "remark": "^4.1.2",
-    "yaml-front-matter": "^3.3.0"
+    "jsonml.js": "^0.1.0",
+    "remark": "^4.2.0",
+    "yaml-front-matter": "^3.4.0"
   },
   "devDependencies": {
-    "eslint": "^2.1.0",
+    "eslint": "^2.7.0",
     "eslint-config-egg": "^2.0.0"
   }
 }

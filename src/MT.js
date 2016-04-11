@@ -12,7 +12,7 @@ module.exports = function MT(markdown) {
   ret.content = transformer(ast);
 
   // Get meta data
-  raw.__content = undefined;
+  delete raw.__content;
   ret.meta = raw;
 
   return ret;

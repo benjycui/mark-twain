@@ -1,6 +1,6 @@
 'use strict';
 
-const JsonML = require('jsonml.js');
+const JsonML = require('jsonml.js/lib/dom');
 
 module.exports = function transformer(node) {
   if (node == null) return;
@@ -10,7 +10,6 @@ module.exports = function transformer(node) {
   }
 
   const transformedChildren = transformer(node.children);
-
   switch (node.type) {
     case 'root':
       return ['article'].concat(transformedChildren);

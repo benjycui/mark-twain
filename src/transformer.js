@@ -2,14 +2,23 @@
 
 const JsonML = require('jsonml.js/lib/dom');
 
-module.exports = function transformer(node) {
+let isTHead = false;
+function transformTHead(node) {
+  const transformedNode = transformer(node);
+  isTHead = false;
+  return transformedNode;
+}
+
+function transformer(node) {
   if (node == null) return;
 
   if (Array.isArray(node)) {
     return node.map(transformer);
   }
 
-  const transformedChildren = transformer(node.children);
+  const transformedChildren = node.type === 'table' ?
+          transformer(node.children.slice(1)) :
+          transformer(node.children);
   switch (node.type) {
     case 'root':
       return ['article'].concat(transformedChildren);
@@ -35,11 +44,16 @@ module.exports = function transformer(node) {
         alt: node.alt,
       }];
     case 'table':
-      return ['table', ['tbody'].concat(transformedChildren)];
+      isTHead = true;
+      return [
+        'table',
+        ['thead', transformTHead(node.children[0])],
+        ['tbody'].concat(transformedChildren),
+      ];
     case 'tableRow':
       return ['tr'].concat(transformedChildren);
     case 'tableCell':
-      return ['td'].concat(transformedChildren);
+      return [isTHead ? 'th' : 'td'].concat(transformedChildren);
     case 'emphasis':
       return ['em'].concat(transformedChildren);
     case 'strong':
@@ -59,4 +73,6 @@ module.exports = function transformer(node) {
     default:
       return node;
   }
-};
+}
+
+module.exports = transformer;

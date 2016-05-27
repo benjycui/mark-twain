@@ -1,5 +1,10 @@
 # Mark Twain
 
+[![](https://img.shields.io/travis/benjycui/mark-twain.svg?style=flat-square)](https://travis-ci.org/benjycui/mark-twain)
+[![npm package](https://img.shields.io/npm/v/mark-twain.svg?style=flat-square)](https://www.npmjs.org/package/mark-twain)
+[![NPM downloads](http://img.shields.io/npm/dm/mark-twain.svg?style=flat-square)](https://npmjs.org/package/mark-twain)
+[![Dependency Status](https://david-dm.org/benjycui/mark-twain.svg?style=flat-square)](https://david-dm.org/benjycui/mark-twain)
+
 It is not easy to process Markdown directly. However, we can use `mark-twain` to parse a Markdown file(and YAML/HTML which in it) into [JsonML](http://www.jsonml.org/) which is easier to process.
 
 ## Installation
@@ -67,8 +72,8 @@ The returned value of `MT` would be JsonML, something looks like this:
 
 ## Relative
 
-[jsonml-to-react-component](https://github.com/benjycui/jsonml-to-react-component) To convert JsonML to React Component.
-[jsonml.js](https://github.com/benjycui/jsonml.js) A collection of JsonML tools.
+* [jsonml-to-react-component](https://github.com/benjycui/jsonml-to-react-component) To convert JsonML to React Component.
+* [jsonml.js](https://github.com/benjycui/jsonml.js) A collection of JsonML tools.
 
 ## Liscence
 

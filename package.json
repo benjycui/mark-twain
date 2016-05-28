@@ -4,8 +4,9 @@
   "description": "Parse Markdown into JsonML.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "lint": "eslint --fix ./index.js ./src"
+    "lint": "eslint ./index.js ./src ./test",
+    "eslint-fix": "eslint --fix ./index.js ./src ./test",
+    "test": "npm run lint && mocha"
   },
   "keywords": [
     "markdown",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "eslint": "^2.7.0",
-    "eslint-config-egg": "^2.0.0"
+    "eslint-config-egg": "^2.0.0",
+    "mocha": "^2.4.5"
   }
 }

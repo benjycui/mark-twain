@@ -64,6 +64,8 @@ function transformer(node) {
       return ['pre', { lang: node.lang }, ['code', node.value]];
     case 'blockquote':
       return ['blockquote'].concat(transformedChildren);
+    case 'break':
+      return ['br'];
     case 'thematicBreak':
       return ['hr'];
     case 'html':

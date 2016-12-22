@@ -15,6 +15,13 @@
     "jsonml"
   ],
   "author": "Benjy Cui <benjytrys@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjycui/mark-twain"
+  },
+  "bugs": {
+    "url": "https://github.com/benjycui/mark-twain/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "jsonml.js": "^0.1.0",

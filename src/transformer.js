@@ -71,7 +71,7 @@ function transformer(node) {
     case 'html':
       return JsonML.fromHTMLText(node.value);
     case 'linkReference':
-      return `[${node.identifier}]`;
+      return transformedChildren;
     default:
       return node;
   }

@@ -52,3 +52,6 @@ console.log('Hello world!');
 <br />
 
 [LINK REFERENCE]
+
+<img class="preview-img no-padding good" align="right" src="https://zos.alipayobjects.com/rmsportal/jeyvhMIQgoPUotNerRGy.png" alt="正确示例">
+<img class="preview-img no-padding bad" align="right" src="https://zos.alipayobjects.com/rmsportal/ppdlrVnFCsYVicjDrnzi.png" alt="错误示例" description="当对比度数值低于 3:1 时，弱视用户将很难识别">

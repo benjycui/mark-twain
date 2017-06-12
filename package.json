@@ -25,12 +25,12 @@
   "license": "MIT",
   "dependencies": {
     "jsonml.js": "^0.1.0",
-    "remark": "^7.0.1",
+    "remark": "^5.0.1",
     "yaml-front-matter": "^3.4.0"
   },
   "devDependencies": {
-    "eslint": "^2.7.0",
-    "eslint-config-egg": "^2.0.0",
+    "eslint": "^3.0.0",
+    "eslint-config-egg": "^4.2.0",
     "mocha": "^3.4.2"
   }
 }

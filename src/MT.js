@@ -1,6 +1,6 @@
 'use strict';
 
-const remark = require('remark');
+const remark = require('remark')();
 const YFM = require('yaml-front-matter');
 const transformer = require('./transformer');
 

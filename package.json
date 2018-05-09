@@ -26,7 +26,7 @@
   "dependencies": {
     "jsonml.js": "^0.1.0",
     "remark": "^5.0.1",
-    "yaml-front-matter": "^3.4.0"
+    "yaml-front-matter": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^3.0.0",

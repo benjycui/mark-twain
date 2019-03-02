@@ -58,6 +58,8 @@ function transformer(node) {
       return [ 'em' ].concat(transformedChildren);
     case 'strong':
       return [ 'strong' ].concat(transformedChildren);
+    case 'delete':
+      return [ 'del' ].concat(transformedChildren);
     case 'inlineCode':
       return [ 'code', node.value ];
     case 'code':

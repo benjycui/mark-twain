@@ -29,7 +29,7 @@
     "yaml-front-matter": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.0.0",
+    "eslint": "^6.6.0",
     "eslint-config-egg": "^4.2.0",
     "mocha": "^3.4.2"
   }
